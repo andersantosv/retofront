@@ -1,0 +1,48 @@
+<h1>
+  Proyección del Cliente
+</h1>
+<hr>
+
+<div class="row">
+	<div class="col-md-12 text-right">
+		<button routerLink="/customers" class="btn btn-warning">
+			<i class="fa fa-plus"></i>
+			Regresar
+		</button>
+	</div>
+</div>
+<hr>
+
+<div class="row">
+  <div class="col-md-6 text-center">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Nombre</div>
+      <p>{{customer.nombre}} </p>
+    </div>
+  </div>
+  <div class="col-md-6 text-center">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Apellido</div>
+      <p>{{customer.apellido}}</p>
+    </div>
+  </div>
+  <div class="col-md-6 text-center">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Edad</div>
+      <p>{{customer.edad}}</p>
+    </div>
+  </div>
+    <div class="col-md-6 text-center">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Fecha Nacimiento</div>
+      <p>{{customer.birthday}}</p>
+    </div>
+  </div>
+  <div class="col-md-12 text-center">
+    <div class="panel panel-danger">
+      <div class="panel-heading">Fecha Probable Muerte</div>
+      <p>{{deathday | date:'dd/MM/yyyy'}}</p>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,91 @@
+<h1>
+  Clientes
+</h1>
+<hr>
+
+<div class="row">
+  <div class="col-md-6 text-center">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Edad Promedio</div>
+      <p>{{averageage | number:'1.2-2'}}</p>
+    </div>
+  </div>
+  <div class="col-md-6 text-center">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Desviación Estandar</div>
+      <p>{{devitationstandar | number:'1.2-2'}}</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+	<div class="col-md-12 text-right">
+		<button routerLink="/customer/new" class="btn btn-primary">
+			<i class="glyphicon glyphicon-plus"></i>
+			Agregar
+		</button>
+	</div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="table-responsive text-center">
+      <table *ngIf="!cargando && customers.length > 0" class="table mt-3 animated fadeIn faster table-striped">
+        <thead>
+          <tr>
+            <th scope="col" class="text-center">#</th>
+            <th scope="col" class="text-center">Nombre</th>
+            <th scope="col" class="text-center">Apellido</th>
+            <th scope="col" class="text-center">Edad</th>
+            <th scope="col" class="text-center">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of customers; let i = index">
+            <th scope="row" class="text-center">{{ i + 1}}</th>
+            <td>{{customer.nombre}}</td>
+            <td>{{customer.apellido}}</td>
+            <td>{{customer.edad}}</td>
+            <td>
+              <button class="btn btn-warning  mr-5"
+                  [routerLink]="['/customer', customer.id]">
+                <i class="glyphicon glyphicon-pencil"></i> Editar
+              </button>
+              <button class="btn btn-danger mr-5"
+                      (click)="removeCustomer(customer, i)">
+                <i class="glyphicon glyphicon-trash"></i> Eliminar
+              </button>
+              <button class="btn btn-info"
+                      [routerLink]="['/customer/projection', customer.id]">
+                <i class="glyphicon glyphicon-stats"></i> Proyección
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table> 
+    </div>     
+  </div>
+ 
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+     <div *ngIf="!cargando && customers.length === 0" class="alert alert-warning text-center">
+      <p>Sin Registros!!</p>
+    </div>   
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div *ngIf="cargando" class="alert alert-info text-center">
+      <h4 class="alert-heading">Cargando</h4>
+      <p class="text-center">Espere por favor</p>
+    </div>  
+  </div>
+</div>
+
+
+
+
